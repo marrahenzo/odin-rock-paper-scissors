@@ -19,27 +19,57 @@ function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     //compare the user input against the computer input and determine the winner
     if (playerSelection === computerSelection) {
-        return "It's a tie!";
+        console.log("It's a tie!");
+        return 2;
     } else if (playerSelection === "rock") {
         if (computerSelection === "paper") {
-            return "You Lose! Paper beats Rock";
+            console.log("You Lose! Paper beats Rock");
+            return 0;
         } else {
-            return "You Win! Rock beats Scissors";
+            console.log("You Win! Rock beats Scissors");
+            return 1;
         }
     } else if (playerSelection === "paper") {
         if (computerSelection === "scissors") {
-            return "You Lose! Scissors beat Paper";
+            console.log("You Lose! Scissors beat Paper");
+            return 0;
         } else {
-            return "You Win! Paper beats Rock";
+            console.log("You Win! Paper beats Rock");
+            return 1;
         }
     } else if (playerSelection === "scissors") {
         if (computerSelection === "rock") {
-            return "You Lose! Rock beats scissors";
+            console.log("You Lose! Rock beats scissors");
+            return 0;
         } else {
-            return "You Win! Scissors beat Rock";
+            console.log("You Win! Scissors beat Rock");
+            return 1;
         }
     }
 }
 
-let playerSelection = prompt("What do you choose?");
-playRound(playerSelection, computerPlay());
+function game() {
+    //basic game logic
+    let playerScore = 0;
+    let computerScore = 0;
+    //repeat while there isn't a winner
+    while (playerScore < 3 && computerScore < 3) {
+        let playerSelection = prompt("What do you choose?", "rock");
+        let result = playRound(playerSelection, computerPlay());
+        //result being 2 means a tie, thus it avoids adding a score
+        if (result !== 2 && result) {
+            playerScore++;
+        } else if (result !== 2) computerScore++;
+        console.log(playerScore + " to " + computerScore);
+    }
+    //determine winner
+    if (playerScore > computerScore) {
+        console.log("The Player wins!");
+        return 1;
+    } else {
+        console.log("The Computer wins!");
+        return 0;
+    }
+}
+
+game();
