@@ -1,0 +1,24 @@
+body {
+  background-color: rgb(93, 96, 255);
+}
+
+h1 {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  font-size: 80px;
+}
+
+#buttons {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  font-size: 200px;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 20px;
+}
